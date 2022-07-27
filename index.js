@@ -55,19 +55,36 @@ const getAssetInfo = async (publicId) => {
 // focused on the faces, applying an outline of the
 // first color, and setting a background of the second color.
 //////////////////////////////////////////////////////////////
-const createImageTag = (publicId, ...colors) => {
-  // Set the effect color and background color
-  const [effectColor, backgroundColor] = colors;
-
+const createImageTag = (publicId) => {
   // Create an image tag with transformations applied to the src URL
   let imageTag = cloudinary.image(publicId, {
     transformation: [
       { width: 250, height: 250, gravity: "faces", crop: "thumb" },
       { radius: "max" },
-      { effect: "outline:10", color: effectColor },
-      { background: backgroundColor },
     ],
   });
 
   return imageTag;
 };
+
+//////////////////
+//
+// Main function
+//
+//////////////////
+(async () => {
+  // Set the image to upload
+  const imagePath = "./assets/image1.png";
+
+  // Upload the image
+  const publicId = await uploadImage(imagePath);
+
+  // Get the colors in the image
+  const colors = await getAssetInfo(publicId);
+
+  // Create an image tag, using two of the colors in a transformation
+  const imageTag = await createImageTag(publicId);
+
+  // Log the image tag to the console
+  console.log(imageTag);
+})();
