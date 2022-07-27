@@ -74,7 +74,7 @@ const createImageTag = (publicId) => {
 //////////////////
 (async () => {
   // Set the image to upload
-  const imagePath = "./assets/image1.png";
+  const imagePath = "./assets/kace.jpeg";
 
   // Upload the image
   const publicId = await uploadImage(imagePath);
