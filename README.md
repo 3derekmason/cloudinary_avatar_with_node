@@ -1,7 +1,5 @@
 # Cloudinary App with NodeJS
 
-This quick start is intended to practice several common Cloudinary features. It doesn't necessarily employ coding best practices and the code here isn't intended for production.
-
 ## Overview
 
 In this app the following Cloudinary features are implemented:
